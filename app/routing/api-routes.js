@@ -9,8 +9,12 @@ module.exports = function(app){
 
 	app.post('/api/friends', function(req, res){
 		var newFriend = req.body;
+		console.log("NF " , newFriend);
 
 		var userScore = newFriend.scores;
+		//Array.from(userScore);
+
+			
 
 		var matchFriend = '';
 		var matchImage = '';
@@ -26,7 +30,6 @@ module.exports = function(app){
 				diff += Math.abs(tableData[i].scores[j] - userScore[j]);
 			}
 			// console.log('diff = ' + diff);
-
 			// If lowest difference, record the friend match
 			if (diff < totalDifference) {
 				// console.log('Closest match found = ' + diff);
@@ -40,7 +43,7 @@ module.exports = function(app){
 		}
 
 		// Add new user
-		friends.push(newFriend);
+		tableData.push(newFriend);
 
 		// Send appropriate response
 		res.json({status: 'OK', matchFriend: matchFriend, matchImage: matchImage});

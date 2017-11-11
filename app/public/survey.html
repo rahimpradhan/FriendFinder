@@ -200,14 +200,14 @@
 
   	//AJAX call to post newFriend data
   	$.post(currentURL + "/api/friends", newFriend, function(data){
-  		console.log(newFriend);
+  		
   		
       			// console.log('response = ' + JSON.stringify(data));
       			// Set the name and image values of friend match
-      			$('#matchName').html(data.matchName);
+      			$('#matchName').html(data.matchFriend);
 		    	$("matchImg").attr("src", data.matchImage);
 		    	// Pop open the modal dialog
-      			$('#resultsModal').modal('open');
+      			$('#resultsModal').show('toggle');
     });
       	
   	})
